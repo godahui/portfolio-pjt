@@ -1,12 +1,11 @@
 #root {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  min-width: 360px;
+  background-color: #fff;
+  font-family: "pretendard", "Malgun Gothic", sans-serif;
   font-size: 16px;
   font-weight: 400;
-  letter-spacing: -0.3px;
 }
 
 body,
