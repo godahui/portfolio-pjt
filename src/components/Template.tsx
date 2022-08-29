@@ -15,15 +15,15 @@ export const Template = ({ children }: IProps) => {
   const [posY, setPosY] = useState(0);
   useEffect(() => {
     document.addEventListener("mousemove", (e) => {
-      const mouseX = Math.round(e.clientX + posX / 5);
-      const mouseY = Math.round(e.clientY + posX / 5);
+      const mouseX = Math.round(e.clientX + posX / 25) - 25;
+      const mouseY = Math.round(e.clientY + posY / 25) - 25;
       setPosX(mouseX);
       setPosY(mouseY);
     });
     return () => {
       document.removeEventListener("mousemove", (e) => {
-        const mouseX = e.clientX - 25;
-        const mouseY = e.clientY - 25;
+        const mouseX = Math.round(e.clientX + posX / 25) - 25;
+        const mouseY = Math.round(e.clientY + posY / 25) - 25;
         setPosX(mouseX);
         setPosY(mouseY);
       });
@@ -115,12 +115,58 @@ const Pointer = styled.div`
   position: absolute;
   width: 50px;
   height: 50px;
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(4px);
   border-radius: 50%;
-  border: 1px solid #fff;
   z-index: 1000;
   pointer-events: none;
+  animation: colorRotate 1.5s infinite linear;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: wave 3s infinite linear;
+  }
+  &:before {
+    background: #fff;
+  }
+  &:after {
+    background: #fff;
+    opacity: 0;
+    animation: wave 3s 1.5s infinite linear;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(3.5);
+      opacity: 0;
+    }
+  }
+  @keyframes colorRotate {
+    0% {
+      backdrop-filter: hue-rotate(0deg) saturate(1);
+    }
+    20% {
+      backdrop-filter: hue-rotate(60deg) saturate(1);
+    }
+    40% {
+      backdrop-filter: hue-rotate(120deg) saturate(1);
+    }
+    60% {
+      backdrop-filter: hue-rotate(180deg) saturate(1);
+    }
+    80% {
+      backdrop-filter: hue-rotate(240deg) saturate(1);
+    }
+    100% {
+      backdrop-filter: hue-rotate(300deg) saturate(1);
+    }
+  }
 `;
 
 const RootWrap = styled.div`
@@ -131,7 +177,7 @@ const RootWrap = styled.div`
   width: 100%;
   height: 100%;
   background: linear-gradient(107.56deg, #e5fbf5 0%, #fce8f9 100%);
-  overflow: hidden auto;
+  overflow: hidden;
   min-width: 360px;
 `;
 
