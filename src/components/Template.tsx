@@ -32,6 +32,40 @@ export const Template = ({ children }: IProps) => {
   return (
     <RootWrap>
       <Pointer style={{ top: posY, left: posX }} />
+      <RightGnb className={gnbToggle ? "show" : "hide"}>
+        <NavLink
+          onClick={() => {
+            setGnbToggle(false);
+          }}
+          to="/"
+        >
+          HOME
+        </NavLink>
+        <NavLink
+          onClick={() => {
+            setGnbToggle(false);
+          }}
+          to="/about"
+        >
+          ABOUT
+        </NavLink>
+        <NavLink
+          onClick={() => {
+            setGnbToggle(false);
+          }}
+          to="/works"
+        >
+          WORKS
+        </NavLink>
+        <NavLink
+          onClick={() => {
+            setGnbToggle(false);
+          }}
+          to="/contact"
+        >
+          CONTACT
+        </NavLink>
+      </RightGnb>
       <HeaderWrap>
         <h1>
           <NavLink to="/">
@@ -65,40 +99,6 @@ export const Template = ({ children }: IProps) => {
         >
           <AppsIcon />
         </button>
-        <RightGnb className={gnbToggle ? "show" : "hide"}>
-          <NavLink
-            onClick={() => {
-              setGnbToggle(false);
-            }}
-            to="/"
-          >
-            HOME
-          </NavLink>
-          <NavLink
-            onClick={() => {
-              setGnbToggle(false);
-            }}
-            to="/about"
-          >
-            ABOUT
-          </NavLink>
-          <NavLink
-            onClick={() => {
-              setGnbToggle(false);
-            }}
-            to="/works"
-          >
-            WORKS
-          </NavLink>
-          <NavLink
-            onClick={() => {
-              setGnbToggle(false);
-            }}
-            to="/contact"
-          >
-            CONTACT
-          </NavLink>
-        </RightGnb>
       </HeaderWrap>
       <ContentWrap>{children}</ContentWrap>
       {gnbToggle && (
@@ -189,6 +189,7 @@ const HeaderWrap = styled.header`
   justify-content: space-between;
   width: calc(100% - 300px);
   margin: 0 150px;
+  z-index: 10;
   h1 {
     flex: 0 0 70px;
     a {
@@ -214,6 +215,19 @@ const HeaderWrap = styled.header`
   @media screen and (max-width: 768px) {
     width: calc(100% - 50px);
     margin: 0 25px;
+    h1 {
+      flex: 0 0 50px;
+      a {
+        svg {
+          width: 55px;
+        }
+      }
+    }
+    button {
+      svg {
+        width: 25px;
+      }
+    }
   }
 `;
 
@@ -222,6 +236,7 @@ const Gnb = styled.nav`
   display: flex;
   flex-flow: row nowrap;
   margin-left: 190px;
+  z-index: 10;
   a {
     font-weight: 300;
     font-size: 20px;
@@ -251,7 +266,7 @@ const RightGnb = styled.nav`
   right: -300px;
   width: 300px;
   height: 100%;
-  z-index: 10;
+  z-index: 11;
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(4px);
   padding: 130px 0;
@@ -311,7 +326,7 @@ const BgWrap = styled.div`
   bottom: 0;
   background-color: linear-gradient(107.56deg, #e5fbf5 0%, #fce8f9 100%);
   backdrop-filter: blur(4px);
-  z-index: 5;
+  z-index: 10;
   cursor: pointer;
 `;
 

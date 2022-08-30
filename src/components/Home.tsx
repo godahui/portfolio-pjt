@@ -12,8 +12,6 @@ export const Home = () => {
   const [Count3, setCount3] = useState(0);
 
   const [Text1, setText1] = useState("");
-  const [Text2, setText2] = useState("");
-  const [Text3, setText3] = useState("");
   const txtRef1 = useRef() as React.MutableRefObject<HTMLDivElement>;
   const txtRef2 = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -72,8 +70,6 @@ export const Home = () => {
         <strong className="txt1">{Text1}</strong>
         <div className="txt2" ref={txtRef1} />
         <div className="txt3" ref={txtRef2} />
-        {/* <h2 className="txt2" dangerouslySetInnerHTML={{ __html: Text2 }} />
-        <h2 className="txt3" dangerouslySetInnerHTML={{ __html: Text3 }} /> */}
       </IntroTop>
       <IntroBottom>
         <span>
@@ -85,6 +81,12 @@ export const Home = () => {
       <BgObject>
         <img src={bg} />
       </BgObject>
+      <div className="animation-wrapper">
+        <div className="particle particle-1"></div>
+        <div className="particle particle-2"></div>
+        <div className="particle particle-3"></div>
+        <div className="particle particle-4"></div>
+      </div>
     </HomeWrap>
   );
 };
@@ -135,9 +137,12 @@ const IntroTop = styled.article`
   @media screen and (max-width: 1024px) {
     padding: 0 50px;
     flex: 0 0 300px;
-    h2 {
+    .txt2,
+    .txt3 {
       flex: 0 0 50px;
-      font-size: 48px;
+      p {
+        font-size: 48px;
+      }
     }
     strong {
       flex: 0 0 80px;
@@ -149,9 +154,12 @@ const IntroTop = styled.article`
   }
   @media screen and (max-width: 441px) {
     justify-content: flex-start;
-    h2 {
+    .txt2,
+    .txt3 {
       flex: 0 0 35px;
-      font-size: 32px;
+      p {
+        font-size: 32px;
+      }
     }
     strong {
       margin-top: 50px;
@@ -166,19 +174,53 @@ const IntroBottom = styled.article`
   padding-bottom: 50px;
   span {
     position: absolute;
-    bottom: 200px;
-    right: 100px;
-    padding: 40px 100px;
+    bottom: 130px;
+    right: 130px;
+    padding: 30px 80px;
     background: rgba(255, 255, 255, 0.5);
     box-shadow: -10px -10px 5px rgba(255, 255, 255, 0.2),
       -2px 10px 30px rgba(191, 187, 210, 0.32);
     backdrop-filter: blur(32px);
-    border-radius: 93px 0px;
+    border-radius: 73px 0px;
     font-weight: 200;
-    font-size: 36px;
-    line-height: 40px;
-    color: #b2b2c7;
+    font-size: 24px;
+    line-height: 30px;
+    color: #9797b6;
     z-index: 1;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
+
+    background-repeat: repeat-y;
+
+    background-position: 5px 10px;
+
+    background-size: 140px;
+    animation: shine 2s infinite ease-in-out;
+  }
+
+  @keyframes shine {
+    0% {
+    }
+    100% {
+      background-position: 100% 10px, 5px 10px, 5px 30px, 5px 50px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    span {
+      width: 100%;
+      bottom: 50%;
+      left: 0;
+      right: 0;
+      padding: 20px 40px;
+      font-size: 20px;
+      line-height: 22px;
+      border-radius: 0px;
+    }
   }
 `;
 const BgObject = styled.div`
@@ -194,8 +236,8 @@ const BgObject = styled.div`
   box-shadow: -10px -10px 5px rgba(255, 255, 255, 0.2),
     -2px 10px 30px rgba(191, 187, 210, 0.32);
   img {
-    width: 100%;
-    height: 100%;
+    width: 1504px;
+    height: auto;
     position: absolute;
     top: 0;
     left: 0;
