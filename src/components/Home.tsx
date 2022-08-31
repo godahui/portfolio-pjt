@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import bg from "../assets/bg_1.jpg";
+import { motion } from "framer-motion";
 
 export const Home = () => {
   let txt1 = "안녕하세요.";
@@ -65,20 +66,54 @@ export const Home = () => {
     };
   }, [txt3, Count2, Count3]);
   return (
-    <HomeWrap>
+    <HomeWrap
+      as={motion.section}
+      initial={{ x: -1320 }}
+      animate={{ x: 0 }}
+      exit={{ x: -1320 }}
+    >
       <IntroTop>
-        <strong className="txt1">{Text1}</strong>
-        <div className="txt2" ref={txtRef1} />
-        <div className="txt3" ref={txtRef2} />
-      </IntroTop>
-      <IntroBottom>
-        <span>
+        <motion.strong animate={{ y: 100 }} className="txt1">
+          {Text1}
+        </motion.strong>
+        <motion.div
+          transition={{ delay: 1.5 }}
+          animate={{ y: 100 }}
+          className="txt2"
+          ref={txtRef1}
+        />
+        <motion.div
+          transition={{ delay: 3.3 }}
+          animate={{ y: 100 }}
+          className="txt3"
+          ref={txtRef2}
+        />
+        <motion.p transition={{ delay: 4.6 }} animate={{ y: 100, opacity: 1 }}>
           Web Publisher
           <br />
           UI &amp; Markup Developer
-        </span>
+        </motion.p>
+      </IntroTop>
+      <IntroBottom>
+        <motion.span
+          transition={{
+            duration: 1,
+            delay: 4.6,
+          }}
+          animate={{ opacity: 1, x: -100 }}
+        >
+          오늘 <em>10번째 방문자</em>입니다.
+          <br />
+          <i>전체방문자 - 1342명</i>
+        </motion.span>
       </IntroBottom>
-      <BgObject>
+      <BgObject
+        as={motion.div}
+        transition={{
+          duration: 1,
+        }}
+        animate={{ opacity: 0.96 }}
+      >
         <img src={bg} />
       </BgObject>
       <div className="animation-wrapper">
@@ -99,7 +134,7 @@ const HomeWrap = styled.section`
   height: 100%;
 `;
 const IntroTop = styled.article`
-  flex: 0 0 400px;
+  flex: 0 0 300px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -109,9 +144,9 @@ const IntroTop = styled.article`
   .txt3 {
     display: flex;
     flex-flow: row nowrap;
-    flex: 0 0 70px;
+    flex: 0 0 78px;
     font-weight: 400;
-    font-size: 64px;
+    font-size: 72px;
     word-break: keep-all;
     p {
       color: #230653;
@@ -131,8 +166,15 @@ const IntroTop = styled.article`
   strong {
     flex: 0 0 100px;
     font-weight: 300;
-    font-size: 36px;
+    font-size: 40px;
     color: #230653;
+  }
+  > p {
+    opacity: 0;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+    color: #6a6385;
   }
   @media screen and (max-width: 1024px) {
     padding: 0 50px;
@@ -161,6 +203,10 @@ const IntroTop = styled.article`
         font-size: 32px;
       }
     }
+    > p {
+      font-size: 16px;
+      line-height: 16px;
+    }
     strong {
       margin-top: 50px;
       flex: 0 0 80px;
@@ -173,10 +219,11 @@ const IntroBottom = styled.article`
   position: relative;
   padding-bottom: 50px;
   span {
+    opacity: 0;
     position: absolute;
     bottom: 130px;
-    right: 130px;
-    padding: 30px 80px;
+    right: 230px;
+    padding: 30px 55px;
     background: rgba(255, 255, 255, 0.5);
     box-shadow: -10px -10px 5px rgba(255, 255, 255, 0.2),
       -2px 10px 30px rgba(191, 187, 210, 0.32);
@@ -185,7 +232,7 @@ const IntroBottom = styled.article`
     font-weight: 200;
     font-size: 24px;
     line-height: 30px;
-    color: #9797b6;
+    color: #50507c;
     z-index: 1;
     background-image: linear-gradient(
       90deg,
@@ -200,6 +247,13 @@ const IntroBottom = styled.article`
 
     background-size: 140px;
     animation: shine 2s infinite ease-in-out;
+    > em {
+      color: #6b2bf2;
+      font-weight: 300;
+    }
+    > i {
+      font-size: 18px;
+    }
   }
 
   @keyframes shine {
@@ -212,14 +266,13 @@ const IntroBottom = styled.article`
 
   @media screen and (max-width: 768px) {
     span {
-      width: 100%;
       bottom: 50%;
-      left: 0;
-      right: 0;
+      right: -100px;
       padding: 20px 40px;
-      font-size: 20px;
-      line-height: 22px;
-      border-radius: 0px;
+      font-size: 18px;
+      line-height: 20px;
+      border-radius: 43px 0px;
+      transform: translateX(0);
     }
   }
 `;
@@ -232,7 +285,7 @@ const BgObject = styled.div`
   border-radius: 450px 0px 0px 0px;
   overflow: hidden;
   z-index: 0;
-  opacity: 0.96;
+  opacity: 0;
   box-shadow: -10px -10px 5px rgba(255, 255, 255, 0.2),
     -2px 10px 30px rgba(191, 187, 210, 0.32);
   img {

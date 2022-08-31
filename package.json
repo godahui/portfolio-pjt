@@ -19,7 +19,6 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
-    "react-transition-group": "^4.4.5",
     "sass": "1.32.13",
     "sass-loader": "7.0.1",
     "styled-components": "^5.3.5",
