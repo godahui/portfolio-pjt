@@ -5,9 +5,9 @@ export const Works = () => {
   return (
     <WorksWrap
       as={motion.section}
-      initial={{ x: 1320 }}
-      animate={{ x: 0 }}
-      exit={{ x: 1320 }}
+      initial={{ y: 500, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: 500, opacity: 0 }}
     >
       about
     </WorksWrap>
