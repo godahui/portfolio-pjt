@@ -13,7 +13,7 @@ export const Works = () => {
     </WorksWrap>
   );
 };
-const WorksWrap = styled.section`
+const WorksWrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
   position: relative;

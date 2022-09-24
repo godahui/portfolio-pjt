@@ -88,11 +88,6 @@ export const Home = () => {
           className="txt3"
           ref={txtRef2}
         />
-        <motion.p transition={{ delay: 4.6 }} animate={{ y: 100, opacity: 1 }}>
-          Web Publisher
-          <br />
-          UI &amp; Markup Developer
-        </motion.p>
       </IntroTop>
       <IntroBottom>
         <motion.span
@@ -102,9 +97,9 @@ export const Home = () => {
           }}
           animate={{ opacity: 1, x: -100 }}
         >
-          오늘 <em>10번째 방문자</em>입니다.
+          Web Publisher
           <br />
-          <i>전체방문자 - 1342명</i>
+          UI &amp; Markup Developer
         </motion.span>
       </IntroBottom>
       <BgObject
@@ -126,7 +121,7 @@ export const Home = () => {
   );
 };
 
-const HomeWrap = styled.section`
+const HomeWrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
   position: relative;

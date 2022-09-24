@@ -13,7 +13,7 @@ export const Contact = () => {
     </ContactWrap>
   );
 };
-const ContactWrap = styled.section`
+const ContactWrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
   position: relative;
