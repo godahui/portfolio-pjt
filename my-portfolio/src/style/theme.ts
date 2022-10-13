@@ -4,21 +4,28 @@ import { DefaultTheme } from "styled-components";
 // and extend them!
 declare module "styled-components" {
   export interface DefaultTheme {
-    borderRadius: string;
+    borderRadius1: string;
+    borderRadius2: string;
+
+    boxShadow: string;
 
     colors: {
-      첫번째: string;
-      두번째: string;
+      primary: string;
+      secondary: string;
     };
   }
 }
 
 const Theme: DefaultTheme = {
-  borderRadius: "5px",
+  borderRadius1: "93px 0px",
+  borderRadius2: "0px 93px",
+
+  boxShadow:
+    "-10px -10px 5px rgba(255, 255, 255, 0.2), -2px 10px 30px rgba(191, 187, 210, 0.32)",
 
   colors: {
-    첫번째: "cyan",
-    두번째: "magenta",
+    primary: "#361E5C",
+    secondary: "#5100D6",
   },
 };
 
