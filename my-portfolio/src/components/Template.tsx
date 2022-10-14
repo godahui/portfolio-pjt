@@ -21,10 +21,5 @@ const RootWrap = styled.div`
 
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-    90deg,
-    #f9eaed 0%,
-    #ece3ec 20.91%,
-    #c5cfea 84.35%
-  );
+  overflow-y: hidden;
 `;

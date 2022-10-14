@@ -6,9 +6,7 @@ export const Header = () => {
   return (
     <HeaderWrap>
       <Logo>
-        <Link to="/">
-          <img src={logo} alt="로고" />
-        </Link>
+        <img src={logo} alt="로고" />
       </Logo>
       <AbountBtn>
         <h2>ABOUT</h2>
@@ -24,7 +22,10 @@ const HeaderWrap = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
 `;
 const Logo = styled.h1`
   display: flex;
