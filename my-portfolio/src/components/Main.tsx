@@ -1,3 +1,7 @@
+import styled from "styled-components";
+
 export const Main = () => {
-  return <>메인페이지</>;
+  return <MainWrap>메인페이지</MainWrap>;
 };
+
+const MainWrap = styled.div``;
