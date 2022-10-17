@@ -1,11 +1,16 @@
+import { useScroll } from "../components/Scroll.hook";
+
 interface DotType {
   num?: number;
   scrollIndex: number;
 }
 
 const Dot = ({ num, scrollIndex }: DotType) => {
+  const { onNextPage } = useScroll();
   return (
     <div
+      data-num={num}
+      onClick={onNextPage}
       style={{
         width: 8,
         height: 8,
@@ -14,6 +19,7 @@ const Dot = ({ num, scrollIndex }: DotType) => {
         backgroundColor: scrollIndex === num ? "#230653" : "transparent",
         transitionDuration: "1000",
         transition: "background-color 0.5s",
+        cursor: "pointer",
       }}
     ></div>
   );

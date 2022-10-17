@@ -10,10 +10,4 @@ const MainWrap = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 100px;
-  background: linear-gradient(
-    90deg,
-    #f9eaed 0%,
-    #ece3ec 20.91%,
-    #c5cfea 84.35%
-  );
 `;

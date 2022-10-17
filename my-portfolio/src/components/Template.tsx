@@ -4,13 +4,15 @@ import { Theme } from "../style/theme";
 interface IProps {
   header: React.ReactElement;
   children: React.ReactElement;
+  footer: React.ReactElement;
 }
 
-export const Template = ({ header, children }: IProps) => {
+export const Template = ({ header, children, footer }: IProps) => {
   return (
     <RootWrap theme={Theme}>
       {header}
       {children}
+      {footer}
     </RootWrap>
   );
 };
