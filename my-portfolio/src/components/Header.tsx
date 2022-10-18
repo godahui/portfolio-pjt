@@ -31,6 +31,7 @@ const Logo = styled.h1`
   flex-flow: row nowrap;
   align-items: center;
   min-width: 70px;
+  cursor: pointer;
 
   position: absolute;
   left: 18px;

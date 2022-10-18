@@ -1,7 +1,53 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import bg1 from "../assets/main-1.png";
+import bg2 from "../assets/main-2.png";
+import bg3 from "../assets/main-3.png";
+import bg4 from "../assets/main-4.png";
+import bg5 from "../assets/main-5.png";
+import bg6 from "../assets/main-6.png";
 
 export const Main = () => {
-  return <MainWrap>메인페이지</MainWrap>;
+  const imgArr = [bg1, bg2, bg3, bg4, bg5, bg6];
+  const length = imgArr.length;
+  const [isHover, setIsHover] = useState();
+  const [img, setImg] = useState(0);
+
+  useEffect(() => {
+    if (img === length) {
+      setImg(0);
+    }
+    const intervelImg = setInterval(() => {
+      setImg(img + 1);
+    }, 1000);
+
+    return () => clearInterval(intervelImg);
+  }, [img, length]);
+
+  return (
+    <MainWrap>
+      <BgWrap>
+        <img src={imgArr[img] || imgArr[0]} alt="" />
+        <h3>고다희</h3>
+        <p>Web Publisher</p>
+        <p>UI & Markup Developer</p>
+        <MenuWrap>
+          <Menu className="top-left">
+            <p>WEB</p>
+          </Menu>
+          <Menu className="top-right">
+            <p>Other Works</p>
+          </Menu>
+          <Menu className="bottom-left">
+            <p>UI Components</p>
+          </Menu>
+          <Menu className="bottom-right">
+            <p>Resume</p>
+          </Menu>
+        </MenuWrap>
+      </BgWrap>
+    </MainWrap>
+  );
 };
 
 const MainWrap = styled.div`
@@ -9,5 +55,142 @@ const MainWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 100px;
+`;
+
+const BgWrap = styled.div`
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  img {
+    border-radius: 50%;
+  }
+  > h3 {
+    color: #361e5c;
+    font-weight: 600;
+    font-size: 28px;
+    margin: 20px 0;
+    max-width: 100%;
+  }
+  > p {
+    font-size: 16px;
+    line-height: 17px;
+    color: #5100d6;
+  }
+`;
+
+const MenuWrap = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+
+  width: 900px;
+
+  @media screen and (max-width: 900px) {
+    width: 110%;
+    padding: 0 10px;
+    justify-content: center;
+  }
+`;
+
+const Menu = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 calc(50% - 50px);
+  cursor: pointer;
+
+  width: 100%;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: -10px -10px 5px rgba(255, 255, 255, 0.2),
+    -2px 10px 30px rgba(191, 187, 210, 0.32);
+  backdrop-filter: blur(16px);
+
+  @media screen and (max-width: 900px) {
+    flex: 1 1 calc(100% - 20px);
+    height: 60px;
+    padding: 0 10px;
+  }
+
+  > p {
+    font-weight: 400;
+    font-size: 32px;
+    color: #a28ea9;
+    margin: auto;
+
+    @media screen and (max-width: 900px) {
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
+
+  &.top-left {
+    border-radius: 93px 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    @media screen and (max-width: 900px) {
+      border-radius: 93px;
+      margin-right: 0;
+    }
+  }
+  &.top-right {
+    border-radius: 93px 0px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    margin-bottom: 10px;
+    > p {
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+    @media screen and (max-width: 900px) {
+      border-radius: 93px;
+    }
+  }
+  &.bottom-left {
+    border-radius: 93px 0px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    margin-right: 10px;
+    > p {
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+    @media screen and (max-width: 900px) {
+      border-radius: 93px;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  &.bottom-right {
+    border-radius: 93px 0px;
+    @media screen and (max-width: 900px) {
+      border-radius: 93px;
+    }
+  }
+
+  &:hover {
+    transition: all 0.4s;
+    > p {
+      color: #411d4e;
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    &:hover {
+      &.top-left {
+        transform: translate(-20px, -20px);
+      }
+      &.top-right {
+        transform: translate(20px, -20px) matrix(-1, 0, 0, 1, 0, 0);
+      }
+      &.bottom-left {
+        transform: translate(-20px, 20px) matrix(-1, 0, 0, 1, 0, 0);
+      }
+      &.bottom-right {
+        transform: translate(20px, 20px);
+      }
+    }
+  }
 `;
