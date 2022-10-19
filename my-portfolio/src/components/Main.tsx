@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import bg1 from "../assets/main-1.png";
 import bg2 from "../assets/main-2.png";
@@ -10,7 +12,6 @@ import bg6 from "../assets/main-6.png";
 export const Main = () => {
   const imgArr = [bg1, bg2, bg3, bg4, bg5, bg6];
   const length = imgArr.length;
-  const [isHover, setIsHover] = useState();
   const [img, setImg] = useState(0);
 
   useEffect(() => {
@@ -25,24 +26,44 @@ export const Main = () => {
   }, [img, length]);
 
   return (
-    <MainWrap>
+    <MainWrap
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ type: "spring" }}
+    >
       <BgWrap>
-        <img src={imgArr[img] || imgArr[0]} alt="" />
-        <h3>고다희</h3>
-        <p>Web Publisher</p>
-        <p>UI & Markup Developer</p>
+        <motion.img
+          animate={{
+            scale: [1, 1.05, 0.8, 0.6, 1],
+            rotate: [0, 250, 180, 360, 0],
+            borderRadius: ["0%", "20%", "50%", "0%", "50%"],
+          }}
+          transition={{
+            duration: 2,
+            ease: "easeInOut",
+            times: [0, 0.2, 0.5, 0.8, 1],
+          }}
+          src={imgArr[img] || imgArr[0]}
+          alt=""
+        />
+        <TitleWrap>
+          <h3>고다희</h3>
+          <p>Web Publisher</p>
+          <p>UI & Markup Developer</p>
+        </TitleWrap>
         <MenuWrap>
-          <Menu className="top-left">
+          <Menu to="/web" className="top-left">
             <p>WEB</p>
           </Menu>
-          <Menu className="top-right">
+          <Menu to="/works" className="top-right">
             <p>Other Works</p>
           </Menu>
-          <Menu className="bottom-left">
+          <Menu to="/ui" className="bottom-left">
             <p>UI Components</p>
           </Menu>
-          <Menu className="bottom-right">
-            <p>Resume</p>
+          <Menu to="/contact" className="bottom-right">
+            <p>Contact</p>
           </Menu>
         </MenuWrap>
       </BgWrap>
@@ -50,7 +71,7 @@ export const Main = () => {
   );
 };
 
-const MainWrap = styled.div`
+const MainWrap = styled(motion.div)`
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -63,12 +84,24 @@ const BgWrap = styled.div`
   position: relative;
   img {
     border-radius: 50%;
+    margin-bottom: 80px;
   }
+`;
+
+const TitleWrap = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+
   > h3 {
     color: #361e5c;
     font-weight: 600;
     font-size: 28px;
-    margin: 20px 0;
+    margin: 15px 0;
     max-width: 100%;
   }
   > p {
@@ -86,7 +119,7 @@ const MenuWrap = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -65%);
+  transform: translate(-50%, -50%);
 
   width: 900px;
 
@@ -97,7 +130,7 @@ const MenuWrap = styled.div`
   }
 `;
 
-const Menu = styled.div`
+const Menu = styled(Link)`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -119,13 +152,13 @@ const Menu = styled.div`
   }
 
   > p {
-    font-weight: 400;
+    font-weight: 300;
     font-size: 32px;
     color: #a28ea9;
     margin: auto;
 
     @media screen and (max-width: 900px) {
-      font-weight: 400;
+      font-weight: 300;
       font-size: 20px;
     }
   }

@@ -1,15 +1,21 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
+
+import { About } from "./About";
 
 export const Header = () => {
   return (
     <HeaderWrap>
       <Logo>
-        <img src={logo} alt="로고" />
+        <Link to="/">
+          <img src={logo} alt="로고" />
+        </Link>
       </Logo>
       <AbountBtn>
         <h2>ABOUT</h2>
       </AbountBtn>
+      <About />
     </HeaderWrap>
   );
 };
