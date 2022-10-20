@@ -30,29 +30,32 @@ export const Main = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ type: "spring" }}
     >
       <BgWrap>
         <motion.img
-          animate={{
-            scale: [1, 1.05, 0.8, 0.6, 1],
-            rotate: [0, 250, 180, 360, 0],
-            borderRadius: ["0%", "20%", "50%", "0%", "50%"],
-          }}
-          transition={{
-            duration: 2,
-            ease: "easeInOut",
-            times: [0, 0.2, 0.5, 0.8, 1],
-          }}
+          initial={{ translateY: -200 }}
+          animate={{ translateY: 0 }}
+          exit={{ translateY: 0 }}
+          transition={{ type: "spring", stiffness: 100 }}
           src={imgArr[img] || imgArr[0]}
           alt=""
         />
-        <TitleWrap>
+        <TitleWrap
+          initial={{ translateY: -200, translateX: "-50%" }}
+          animate={{ translateY: 0, translateX: "-50%" }}
+          exit={{ translateY: 0, translateX: "-50%" }}
+          transition={{ type: "spring", stiffness: 100, delay: 0.1 }}
+        >
           <h3>고다희</h3>
           <p>Web Publisher</p>
-          <p>UI & Markup Developer</p>
+          <p>Frontend Developer</p>
         </TitleWrap>
-        <MenuWrap>
+        <MenuWrap
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
           <Menu to="/web" className="top-left">
             <p>WEB</p>
           </Menu>
@@ -72,13 +75,19 @@ export const Main = () => {
 };
 
 const MainWrap = styled(motion.div)`
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  overflow: hidden;
+  min-width: 320px;
 `;
 
 const BgWrap = styled.div`
+  display: flex;
+  flex: 0 0 auto;
   padding: 10px;
   text-align: center;
   position: relative;
@@ -86,14 +95,18 @@ const BgWrap = styled.div`
     border-radius: 50%;
     margin-bottom: 80px;
   }
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
-const TitleWrap = styled.div`
+const TitleWrap = styled(motion.div)`
   display: flex;
   flex-flow: column nowrap;
 
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   left: 50%;
   transform: translate(-50%, 0);
 
@@ -111,7 +124,7 @@ const TitleWrap = styled.div`
   }
 `;
 
-const MenuWrap = styled.div`
+const MenuWrap = styled(motion.div)`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -139,6 +152,7 @@ const Menu = styled(Link)`
   cursor: pointer;
 
   width: 100%;
+  max-width: 600px;
   height: 120px;
   background: rgba(255, 255, 255, 0.5);
   box-shadow: -10px -10px 5px rgba(255, 255, 255, 0.2),
@@ -149,6 +163,11 @@ const Menu = styled(Link)`
     flex: 1 1 calc(100% - 20px);
     height: 60px;
     padding: 0 10px;
+  }
+
+  @media screen and (max-width: 610px) {
+    flex: 0 0 auto;
+    width: 60%;
   }
 
   > p {
