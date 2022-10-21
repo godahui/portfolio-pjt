@@ -3,6 +3,7 @@ import GlobalStyle from "./style/GlobalStyle";
 import { Theme } from "./style/theme";
 import { AnimatePresence } from "framer-motion";
 import { Provider } from "react-redux";
+import store from "./store";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -14,7 +15,6 @@ import { Web } from "./components/Web";
 import { Works } from "./components/Works";
 import { Ui } from "./components/Ui";
 import { Contact } from "./components/Contact";
-import store from "./store";
 
 export const App = () => {
   return (

@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { useAppSelector } from "../store/hooks";
 import { Theme } from "../style/theme";
+import { About } from "./About";
 
 interface IProps {
   header: React.ReactElement;
@@ -8,11 +10,13 @@ interface IProps {
 }
 
 export const Template = ({ header, children, footer }: IProps) => {
+  const toggle = useAppSelector((state) => state.modal.toggle);
   return (
     <RootWrap theme={Theme}>
       {header}
       {children}
       {footer}
+      {toggle && <About />}
     </RootWrap>
   );
 };
@@ -20,6 +24,7 @@ export const Template = ({ header, children, footer }: IProps) => {
 const RootWrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  position: relative;
 
   width: 100vw;
   height: 100vh;
