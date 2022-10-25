@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <HeaderWrap>
       <Logo>
-        <Link to="/">
+        <Link to="/" title="메인으로 돌아가기">
           <img src={logo} alt="로고" />
         </Link>
       </Logo>
@@ -18,6 +18,7 @@ export const Header = () => {
         onClick={() => {
           dispatch(onToggle(!toggle));
         }}
+        title="About Me"
       >
         <h2>ABOUT</h2>
       </AbountBtn>

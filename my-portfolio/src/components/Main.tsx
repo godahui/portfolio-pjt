@@ -57,10 +57,10 @@ export const Main = () => {
           transition={{ delay: 0.3 }}
         >
           <Menu to="/web" className="top-left">
-            <p>WEB</p>
+            <p>Web Projects</p>
           </Menu>
           <Menu to="/works" className="top-right">
-            <p>Other Works</p>
+            <p>Design Works</p>
           </Menu>
           <Menu to="/ui" className="bottom-left">
             <p>UI Components</p>
