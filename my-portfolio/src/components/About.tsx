@@ -25,7 +25,7 @@ export const About = () => {
           <ImageWrap>
             <img src={profile} alt="프로필 이미지" />
             <p>안녕하세요</p>
-            <p>다채로운 웹퍼블리셔</p>
+            <p>✨다채로운 웹퍼블리셔✨</p>
             <p>고다희입니다</p>
           </ImageWrap>
           <ProfileWrap>

@@ -62,7 +62,7 @@ export const Contact = () => {
       >
         <div>
           <h3>Contact</h3>
-          <strong>끝까지 봐주셔서 감사합니다!</strong>
+          <strong>끝까지 봐주셔서 감사합니다!😁</strong>
           <button
             title="Email copy"
             onClick={() => doCopy("ekgml0676@naver.com")}
