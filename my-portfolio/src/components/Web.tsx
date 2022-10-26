@@ -96,12 +96,6 @@ const RootWrap = styled(motion.div)`
   justify-content: center;
   align-items: flex-start;
   overflow: hidden auto;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-
-  &:-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 const GalleryWrap = styled.section`
