@@ -6,6 +6,24 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
   }
 
+  *{
+    scrollbar-color: #6969dd #e0e0e0;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      background-color: #e0e0e0;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 50px;
+      background-color: #6969dd;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #e0e0e0;
+      border-radius: 50px;
+    }
+  }
+
   html,
   body{
     font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
