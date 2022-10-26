@@ -9,7 +9,7 @@ import bg4 from "../assets/main-4.png";
 import bg5 from "../assets/main-5.png";
 import bg6 from "../assets/main-6.png";
 
-export const Main = () => {
+const Main = () => {
   const imgArr = [bg1, bg2, bg3, bg4, bg5, bg6];
   const length = imgArr.length;
   const [img, setImg] = useState(0);
@@ -73,6 +73,8 @@ export const Main = () => {
     </MainWrap>
   );
 };
+
+export default Main;
 
 const MainWrap = styled(motion.div)`
   width: 100%;

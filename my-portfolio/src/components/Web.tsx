@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Web = () => {
+const Web = () => {
   return (
     <RootWrap
       initial={{ translateY: -200 }}
@@ -88,6 +88,8 @@ export const Web = () => {
     </RootWrap>
   );
 };
+
+export default Web;
 
 const RootWrap = styled(motion.div)`
   width: 100%;

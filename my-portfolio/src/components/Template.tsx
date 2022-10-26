@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useAppSelector } from "../store/hooks";
 import { Theme } from "../style/theme";
-import { About } from "./About";
+import About from "./About";
 
 interface IProps {
   header: React.ReactElement;

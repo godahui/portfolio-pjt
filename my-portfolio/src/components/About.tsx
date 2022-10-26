@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { onToggle } from "../store/modalSlice";
 import profile from "../assets/profile-img.png";
 
-export const About = () => {
+const About = () => {
   const dispatch = useAppDispatch();
   const toggle = useAppSelector((state) => state.modal.toggle);
   return (
@@ -25,7 +25,7 @@ export const About = () => {
           <ImageWrap>
             <img src={profile} alt="프로필 이미지" />
             <p>안녕하세요</p>
-            <p>다채로운 웹퍼블리셔</p>
+            <p>✨다채로운 웹퍼블리셔✨</p>
             <p>고다희입니다</p>
           </ImageWrap>
           <ProfileWrap>
@@ -72,6 +72,9 @@ export const About = () => {
     </>
   );
 };
+
+export default About;
+
 const ModalWrap = styled(motion.div)`
   width: 100%;
   height: 80%;

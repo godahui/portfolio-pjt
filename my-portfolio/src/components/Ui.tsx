@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Ui = () => {
+const Ui = () => {
   return (
     <RootWrap
       initial={{ translateY: -200 }}
@@ -16,6 +16,8 @@ export const Ui = () => {
     </RootWrap>
   );
 };
+
+export default Ui;
 
 const RootWrap = styled(motion.div)`
   width: 100%;
