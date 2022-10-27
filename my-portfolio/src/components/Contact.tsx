@@ -61,7 +61,7 @@ const Contact = () => {
         }}
       >
         <div>
-          <h3>Contact</h3>
+          <h3 onClick={() => window.history.back()}>Contact</h3>
           <strong>끝까지 봐주셔서 감사합니다!😁</strong>
           <button
             title="Email copy"
@@ -124,6 +124,7 @@ const ContactWrap = styled(motion.section)`
       font-size: 34px;
       margin: 15px 0;
       max-width: 100%;
+      cursor: pointer;
     }
 
     > strong {

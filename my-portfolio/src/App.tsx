@@ -17,7 +17,8 @@ import { Loading } from "./components/Loading";
 const Main = lazy(() => import("./components/Main"));
 const Web = lazy(() => import("./components/Web"));
 const Works = lazy(() => import("./components/Works"));
-const Ui = lazy(() => import("./components/Ui"));
+const WorksDetail = lazy(() => import("./components/WorksDetail"));
+const About = lazy(() => import("./components/About"));
 const Contact = lazy(() => import("./components/Contact"));
 
 export const App = () => {
@@ -32,8 +33,8 @@ export const App = () => {
                   <Route path="/" element={<Main />} />
                   <Route path="web" element={<Web />} />
                   <Route path="works" element={<Works />} />
-                  <Route path="works/:id" element={<></>} />
-                  <Route path="ui" element={<Ui />} />
+                  <Route path="works/:id" element={<WorksDetail />} />
+                  <Route path="about" element={<About />} />
                   <Route path="contact" element={<Contact />} />
                 </Routes>
               </Suspense>

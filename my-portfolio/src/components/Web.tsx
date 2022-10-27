@@ -11,7 +11,7 @@ const Web = () => {
       transition={{ type: "spring", stiffness: 100 }}
     >
       <GalleryWrap>
-        <h3>Web Projects</h3>
+        <h3 onClick={() => window.history.back()}>Web Projects</h3>
         <ProjectList>
           <ProjectItem
             initial={{ opacity: 0.5 }}
@@ -115,6 +115,7 @@ const GalleryWrap = styled.section`
     font-size: 28px;
     margin: 15px 0;
     max-width: 100%;
+    cursor: pointer;
   }
 
   @media screen and (max-width: 1024px) {

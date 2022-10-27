@@ -56,14 +56,14 @@ const Main = () => {
           exit={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <Menu to="/web" className="top-left">
+          <Menu to="/about" className="top-left">
+            <p>About</p>
+          </Menu>
+          <Menu to="/web" className="top-right">
             <p>Web Projects</p>
           </Menu>
-          <Menu to="/works" className="top-right">
+          <Menu to="/works" className="bottom-left">
             <p>Design Works</p>
-          </Menu>
-          <Menu to="/ui" className="bottom-left">
-            <p>UI Components</p>
           </Menu>
           <Menu to="/contact" className="bottom-right">
             <p>Contact</p>

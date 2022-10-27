@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { works } from "../data/works";
 
 const Works = () => {
   return (
@@ -11,68 +12,33 @@ const Works = () => {
       transition={{ type: "spring", stiffness: 100 }}
     >
       <GalleryWrap>
-        <h3>Design Works</h3>
+        <h3 onClick={() => window.history.back()}>Design Works</h3>
         <ProjectList>
-          <ProjectItem
-            initial={{ opacity: 0.5 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Link
-              to="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ backgroundImage: "url(assets/portfolio.png)" }}
-            >
-              <div>
-                <strong>준비중</strong>
-                <p>-</p>
-                <div className="go-btn">
-                  <span>보러가기</span>
-                </div>
-              </div>
-            </Link>
-          </ProjectItem>
-          <ProjectItem
-            initial={{ opacity: 0.5 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Link
-              to="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ backgroundImage: "url(assets/portfolio.png)" }}
-            >
-              <div>
-                <strong>준비중</strong>
-                <p>-</p>
-                <div className="go-btn">
-                  <span>보러가기</span>
-                </div>
-              </div>
-            </Link>
-          </ProjectItem>
-          <ProjectItem
-            initial={{ opacity: 0.5 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Link
-              to="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ backgroundImage: "url(assets/portfolio.png)" }}
-            >
-              <div>
-                <strong>준비중</strong>
-                <p>-</p>
-                <div className="go-btn">
-                  <span>보러가기</span>
-                </div>
-              </div>
-            </Link>
-          </ProjectItem>
+          {works.map((o, inx) => {
+            return (
+              <ProjectItem
+                key={`item-${inx}`}
+                initial={{ opacity: 0.5 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <Link
+                  to={`/works/${o.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ backgroundImage: `url(${o.img})` }}
+                >
+                  <div>
+                    <strong>{o.name}</strong>
+                    <p>{o.descript}</p>
+                    <div className="go-btn">
+                      <span>보러가기</span>
+                    </div>
+                  </div>
+                </Link>
+              </ProjectItem>
+            );
+          })}
         </ProjectList>
       </GalleryWrap>
     </RootWrap>
@@ -105,6 +71,7 @@ const GalleryWrap = styled.section`
     font-size: 28px;
     margin: 15px 0;
     max-width: 100%;
+    cursor: pointer;
   }
 
   @media screen and (max-width: 1024px) {
@@ -120,7 +87,7 @@ const ProjectList = styled.ul`
   margin-top: 30px;
   margin-bottom: 150px;
 
-  justify-content: space-between;
+  justify-content: flex-start;
 
   @media screen and (max-width: 1024px) {
     flex-flow: column nowrap;
@@ -135,11 +102,16 @@ const ProjectItem = styled(motion.li)`
   border-radius: 93px;
   overflow: hidden;
   box-shadow: -2px 10px 30px rgba(191, 187, 210, 0.32);
-
+  &:not(:nth-child(3n)) {
+    margin-right: 20px;
+  }
   &:hover {
     > a > div {
       height: 100%;
       transition: all 0.2s;
+      > p {
+        display: inline;
+      }
       .go-btn {
         display: flex;
       }
@@ -169,7 +141,7 @@ const ProjectItem = styled(motion.li)`
       height: 80px;
       padding: 20px;
       text-align: center;
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(12px);
 
       > strong {
@@ -178,7 +150,8 @@ const ProjectItem = styled(motion.li)`
         color: #230653;
       }
       > p {
-        color: #656466;
+        color: #222124;
+        display: none;
       }
 
       .go-btn {
@@ -211,8 +184,8 @@ const ProjectItem = styled(motion.li)`
   @media screen and (max-width: 1024px) {
     width: 100%;
     height: 320px;
-    &:nth-child(even) {
-      transform: none;
+    &:not(:nth-child(3n)) {
+      margin-right: none;
     }
   }
 `;
