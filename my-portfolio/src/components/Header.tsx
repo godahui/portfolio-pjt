@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { onToggle } from "../store/modalSlice";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
+import { BiMenu } from "react-icons/bi";
 
 export const Header = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,7 @@ export const Header = () => {
         }}
         title="About Me"
       >
-        <h2>ABOUT</h2>
+        <BiMenu />
       </AbountBtn>
     </HeaderWrap>
   );
@@ -73,4 +74,16 @@ const AbountBtn = styled.button`
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
+
+  > svg {
+    width: 34px;
+    height: 34px;
+    fill: #230653;
+    &:hover {
+      fill: #6b2bf2;
+    }
+    &:active {
+      fill: #5824c8;
+    }
+  }
 `;

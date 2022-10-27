@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useAppSelector } from "../store/hooks";
 import { Theme } from "../style/theme";
-import { About } from "./About";
+import Menu from "./Menu";
 
 interface IProps {
   header: React.ReactElement;
@@ -16,7 +16,7 @@ export const Template = ({ header, children, footer }: IProps) => {
       {header}
       {children}
       {footer}
-      {toggle && <About />}
+      {toggle && <Menu />}
     </RootWrap>
   );
 };
@@ -28,7 +28,7 @@ const RootWrap = styled.div`
 
   width: 100vw;
   height: 100vh;
-  overflow-y: hidden;
+  overflow: hidden;
 
   background: linear-gradient(
     90deg,

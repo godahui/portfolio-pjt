@@ -3,7 +3,7 @@ import React from "react";
 import { BiCopy } from "react-icons/bi";
 import styled from "styled-components";
 
-export const Contact = () => {
+const Contact = () => {
   const x = useMotionValue(200);
   const y = useMotionValue(200);
 
@@ -61,7 +61,7 @@ export const Contact = () => {
         }}
       >
         <div>
-          <h3>Contact</h3>
+          <h3 onClick={() => window.history.back()}>Contact</h3>
           <strong>끝까지 봐주셔서 감사합니다!😁</strong>
           <button
             title="Email copy"
@@ -81,6 +81,8 @@ export const Contact = () => {
     </RootWrap>
   );
 };
+
+export default Contact;
 
 const RootWrap = styled(motion.div)`
   width: 100%;
@@ -122,6 +124,7 @@ const ContactWrap = styled(motion.section)`
       font-size: 34px;
       margin: 15px 0;
       max-width: 100%;
+      cursor: pointer;
     }
 
     > strong {

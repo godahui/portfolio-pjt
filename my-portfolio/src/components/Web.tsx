@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Web = () => {
+const Web = () => {
   return (
     <RootWrap
       initial={{ translateY: -200 }}
@@ -11,7 +11,7 @@ export const Web = () => {
       transition={{ type: "spring", stiffness: 100 }}
     >
       <GalleryWrap>
-        <h3>Web Projects</h3>
+        <h3 onClick={() => window.history.back()}>Web Projects</h3>
         <ProjectList>
           <ProjectItem
             initial={{ opacity: 0.5 }}
@@ -89,6 +89,8 @@ export const Web = () => {
   );
 };
 
+export default Web;
+
 const RootWrap = styled(motion.div)`
   width: 100%;
   height: 100vh;
@@ -113,6 +115,7 @@ const GalleryWrap = styled.section`
     font-size: 28px;
     margin: 15px 0;
     max-width: 100%;
+    cursor: pointer;
   }
 
   @media screen and (max-width: 1024px) {

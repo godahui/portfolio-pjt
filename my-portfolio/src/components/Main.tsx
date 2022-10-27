@@ -9,7 +9,7 @@ import bg4 from "../assets/main-4.png";
 import bg5 from "../assets/main-5.png";
 import bg6 from "../assets/main-6.png";
 
-export const Main = () => {
+const Main = () => {
   const imgArr = [bg1, bg2, bg3, bg4, bg5, bg6];
   const length = imgArr.length;
   const [img, setImg] = useState(0);
@@ -56,14 +56,14 @@ export const Main = () => {
           exit={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <Menu to="/web" className="top-left">
+          <Menu to="/about" className="top-left">
+            <p>About</p>
+          </Menu>
+          <Menu to="/web" className="top-right">
             <p>Web Projects</p>
           </Menu>
-          <Menu to="/works" className="top-right">
+          <Menu to="/works" className="bottom-left">
             <p>Design Works</p>
-          </Menu>
-          <Menu to="/ui" className="bottom-left">
-            <p>UI Components</p>
           </Menu>
           <Menu to="/contact" className="bottom-right">
             <p>Contact</p>
@@ -73,6 +73,8 @@ export const Main = () => {
     </MainWrap>
   );
 };
+
+export default Main;
 
 const MainWrap = styled(motion.div)`
   width: 100%;

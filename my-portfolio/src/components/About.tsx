@@ -1,28 +1,24 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { onToggle } from "../store/modalSlice";
+import styled from "styled-components";
 import profile from "../assets/profile-img.png";
 
-export const About = () => {
-  const dispatch = useAppDispatch();
-  const toggle = useAppSelector((state) => state.modal.toggle);
+const About = () => {
   return (
-    <>
-      <ModalWrap
-        initial={{ translateY: -200, opacity: 0 }}
-        animate={{ translateY: 0, opacity: 1 }}
-        exit={{ translateY: 0, opacity: 1 }}
-        transition={{ stiffness: 100 }}
-      >
-        <h3>About Me</h3>
-        <CloseBtn
-          onClick={() => {
-            dispatch(onToggle(!toggle));
-          }}
-        />
+    <RootWrap
+      initial={{ translateY: -200 }}
+      animate={{ translateY: 0 }}
+      exit={{ translateY: 0 }}
+      transition={{ type: "spring", stiffness: 100 }}
+    >
+      <ComponentWrap>
+        <h3 onClick={() => window.history.back()}>About</h3>
         <AboutList>
-          <ImageWrap>
+          <ImageWrap
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
             <img src={profile} alt="프로필 이미지" />
             <p>안녕하세요</p>
             <p>✨다채로운 웹퍼블리셔✨</p>
@@ -30,12 +26,22 @@ export const About = () => {
           </ImageWrap>
           <ProfileWrap>
             <ul>
-              <li>
+              <motion.li
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
                 <h4>PROFILE</h4>
                 <p>고다희 GO DA HUI</p>
                 <p>1994. 10. 04</p>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
                 <h4>SKILLS</h4>
                 <div className="">
                   <span>HTML5</span>
@@ -49,119 +55,80 @@ export const About = () => {
                   <span>Figma</span>
                   <span>Responsive Web</span>
                 </div>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
                 <h4>EXPERIENCE</h4>
                 <p>아크라인소프트</p>
                 <p>2021.01 ~ 2022.10</p>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
                 <h4>EDUCATION</h4>
                 <p>동양미래 대학교 시각디자인과 졸업</p>
                 <p>그린컴퓨터아카데미 웹디자이너, 퍼블리셔 과정 수료</p>
-              </li>
+              </motion.li>
             </ul>
           </ProfileWrap>
         </AboutList>
-      </ModalWrap>
-      <BgWrap
-        onClick={() => {
-          dispatch(onToggle(!toggle));
-        }}
-      />
-    </>
+      </ComponentWrap>
+    </RootWrap>
   );
 };
-const ModalWrap = styled(motion.div)`
+
+export default About;
+
+const RootWrap = styled(motion.div)`
   width: 100%;
-  height: 80%;
+  height: 100vh;
   display: flex;
-  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
   overflow: hidden;
+`;
+const ComponentWrap = styled.section`
+  width: 100%;
+  height: auto;
+  max-width: 1024px;
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: column nowrap;
 
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(12px);
-  box-shadow: -2px 10px 30px rgba(191, 187, 210, 0.32);
-  border-bottom-left-radius: 93px;
-  border-bottom-right-radius: 93px;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
+  margin-top: 100px;
 
   > h3 {
-    flex: 0 0 auto;
     color: #361e5c;
     font-weight: 600;
     font-size: 28px;
-    margin: 15px 0 15px 18px;
+    margin: 15px 0 20px;
     max-width: 100%;
+    cursor: pointer;
   }
 
-  @media screen and (max-width: 768px) {
+  > div {
+    width: 100%;
     height: 100%;
-    overflow: hidden auto;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: -10px -10px 5px rgba(255, 255, 255, 0.2),
+      -2px 10px 30px rgba(191, 187, 210, 0.32);
+    backdrop-filter: blur(16px);
+    border-radius: 93px;
+    margin-bottom: 48px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    max-width: 100%;
+    padding: 0 18px;
   }
 `;
-
-const BgWrap = styled.button`
-  width: 100%;
-  height: 100%;
-
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 50;
-`;
-
-const CloseBtn = styled.button`
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 100;
-
-  width: 28px;
-  height: 28px;
-
-  &::after,
-  &::before {
-    display: block;
-    content: "";
-
-    position: absolute;
-    top: 0;
-    right: 50%;
-
-    width: 1px;
-    height: 30px;
-    border-radius: 10px;
-    background-color: #361e5c;
-    transform: rotate(45deg) translateX(-50%);
-  }
-  &::before {
-    transform: rotate(-45deg) translateX(-50%);
-  }
-
-  &:hover {
-    &::after,
-    &::before {
-      background-color: #6b2bf2;
-    }
-  }
-  &:active {
-    &::after,
-    &::before {
-      background-color: #5824c8;
-    }
-  }
-`;
-
 const AboutList = styled.ul`
   display: flex;
   flex-flow: row nowrap;
@@ -179,7 +146,7 @@ const AboutList = styled.ul`
     flex-flow: column nowrap;
   }
 `;
-const ImageWrap = styled.li`
+const ImageWrap = styled(motion.li)`
   display: flex;
   flex-flow: column nowrap;
   flex: 0 0 auto;
@@ -209,6 +176,7 @@ const ProfileWrap = styled.li`
     max-width: 700px;
     li {
       flex: 0 0 49%;
+      margin-bottom: 20px;
       h4 {
         font-size: 28px;
         font-weight: 600;
