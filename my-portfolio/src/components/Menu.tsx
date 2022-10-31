@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { onToggle } from "../store/modalSlice";
+import { onMenuToggle, onCursor } from "../store/slice";
 import { Link } from "react-router-dom";
 
 const Menu = () => {
   const dispatch = useAppDispatch();
-  const toggle = useAppSelector((state) => state.modal.toggle);
+  const toggle = useAppSelector((state) => state.modal.menuToggle);
+  const cursorOn = () => {
+    dispatch(onCursor(true));
+  };
+  const cursorOff = () => {
+    dispatch(onCursor(false));
+  };
   return (
     <>
       <ModalWrap
@@ -18,14 +24,18 @@ const Menu = () => {
         <h3>Menu</h3>
         <CloseBtn
           onClick={() => {
-            dispatch(onToggle(!toggle));
+            dispatch(onMenuToggle(!toggle));
           }}
+          onMouseOver={cursorOn}
+          onMouseLeave={cursorOff}
         />
         <ul>
           <li
             onClick={() => {
-              dispatch(onToggle(!toggle));
+              dispatch(onMenuToggle(!toggle));
             }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <Link to="/">
               <p>Home</p>
@@ -33,8 +43,10 @@ const Menu = () => {
           </li>
           <li
             onClick={() => {
-              dispatch(onToggle(!toggle));
+              dispatch(onMenuToggle(!toggle));
             }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <Link to="/about">
               <p>About</p>
@@ -42,8 +54,10 @@ const Menu = () => {
           </li>
           <li
             onClick={() => {
-              dispatch(onToggle(!toggle));
+              dispatch(onMenuToggle(!toggle));
             }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <Link to="/web">
               <p>Web Projects</p>
@@ -51,8 +65,10 @@ const Menu = () => {
           </li>
           <li
             onClick={() => {
-              dispatch(onToggle(!toggle));
+              dispatch(onMenuToggle(!toggle));
             }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <Link to="/works">
               <p>Design Works</p>
@@ -60,8 +76,10 @@ const Menu = () => {
           </li>
           <li
             onClick={() => {
-              dispatch(onToggle(!toggle));
+              dispatch(onMenuToggle(!toggle));
             }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <Link to="/contact">
               <p>Contact</p>
@@ -71,7 +89,7 @@ const Menu = () => {
       </ModalWrap>
       <BgWrap
         onClick={() => {
-          dispatch(onToggle(!toggle));
+          dispatch(onMenuToggle(!toggle));
         }}
       />
     </>
@@ -116,6 +134,7 @@ const ModalWrap = styled(motion.div)`
       width: 100%;
       flex: 0 0 40px;
       padding: 10px 38px;
+      position: relative;
       > a {
         display: block;
         width: 100%;
@@ -126,9 +145,24 @@ const ModalWrap = styled(motion.div)`
           font-size: 20px;
         }
       }
+      &::before {
+        display: block;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 0;
+        background-color: #6b2bf2;
+        transition: height 0.2s;
+      }
       &:hover {
         p {
           color: #6b2bf2;
+        }
+        &::before {
+          height: 100%;
         }
       }
       &:active {

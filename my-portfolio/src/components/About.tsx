@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import profile from "../assets/profile-img.png";
+import { useAppDispatch } from "../store/hooks";
+import { onCursor } from "../store/slice";
 
 const About = () => {
+  const dispatch = useAppDispatch();
+  const cursorOn = () => {
+    dispatch(onCursor(true));
+  };
+  const cursorOff = () => {
+    dispatch(onCursor(false));
+  };
   return (
     <RootWrap
       initial={{ translateY: -200 }}
@@ -11,7 +20,13 @@ const About = () => {
       transition={{ type: "spring", stiffness: 100 }}
     >
       <ComponentWrap>
-        <h3 onClick={() => window.history.back()}>About</h3>
+        <h3
+          onClick={() => window.history.back()}
+          onMouseOver={cursorOn}
+          onMouseLeave={cursorOff}
+        >
+          About
+        </h3>
         <AboutList>
           <ImageWrap
             initial={{ opacity: 0 }}
@@ -105,6 +120,7 @@ const ComponentWrap = styled.section`
   margin-top: 100px;
 
   > h3 {
+    display: inline-block;
     color: #361e5c;
     font-weight: 600;
     font-size: 28px;

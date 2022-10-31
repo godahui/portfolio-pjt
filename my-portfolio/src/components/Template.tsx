@@ -3,6 +3,8 @@ import { useAppSelector } from "../store/hooks";
 import { Theme } from "../style/theme";
 import Menu from "./Menu";
 
+import { Cursor } from "../components/Cursor";
+
 interface IProps {
   header: React.ReactElement;
   children: React.ReactElement;
@@ -10,9 +12,10 @@ interface IProps {
 }
 
 export const Template = ({ header, children, footer }: IProps) => {
-  const toggle = useAppSelector((state) => state.modal.toggle);
+  const toggle = useAppSelector((state) => state.modal.menuToggle);
   return (
     <RootWrap theme={Theme}>
+      <Cursor />
       {header}
       {children}
       {footer}

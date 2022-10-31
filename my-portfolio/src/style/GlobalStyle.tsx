@@ -4,6 +4,12 @@ const GlobalStyle = createGlobalStyle`
   #root{
     width: 100vw;
     height: 100vh;
+
+    
+    --color-cursor: 220, 90, 90;
+    --cursor-outline-shade: 0.3;
+    --cursor-size: 10px;
+    --cursor-outline-size: 12px;
   }
 
   *{
@@ -343,6 +349,31 @@ const GlobalStyle = createGlobalStyle`
   }
   select::-ms-expand {
     display:none;
+  }
+
+  #cursor-dot,
+  #cursor-dot-outline {
+    z-index: 999;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+  }
+
+  #cursor-dot {
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    background-color: rgba(var(--color-cursor), 1);
+  }
+
+  #cursor-dot-outline {
+    width: var(--cursor-outline-size);
+    height: var(--cursor-outline-size);
+    background-color: rgba(var(--color-cursor), var(--cursor-outline-shade));
   }
 `;
 export default GlobalStyle;
