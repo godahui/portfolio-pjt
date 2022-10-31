@@ -2,8 +2,18 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import React from "react";
 import { BiCopy } from "react-icons/bi";
 import styled from "styled-components";
+import { useAppDispatch } from "../store/hooks";
+import { onCursor } from "../store/slice";
 
 const Contact = () => {
+  const dispatch = useAppDispatch();
+  const cursorOn = () => {
+    dispatch(onCursor(true));
+  };
+  const cursorOff = () => {
+    dispatch(onCursor(false));
+  };
+
   const x = useMotionValue(200);
   const y = useMotionValue(200);
 
@@ -61,17 +71,30 @@ const Contact = () => {
         }}
       >
         <div>
-          <h3 onClick={() => window.history.back()}>Contact</h3>
+          <h3
+            onClick={() => window.history.back()}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
+          >
+            Contact
+          </h3>
           <strong>끝까지 봐주셔서 감사합니다!😁</strong>
           <button
             title="Email copy"
             onClick={() => doCopy("ekgml0676@naver.com")}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <span>Email</span>
             <p>- ekgml0676@naver.com</p>
             <BiCopy />
           </button>
-          <button title="KakaoTalk ID copy" onClick={() => doCopy("gggp999")}>
+          <button
+            title="KakaoTalk ID copy"
+            onClick={() => doCopy("gggp999")}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
+          >
             <span>KakaoTalk ID</span>
             <p>- gggp999</p>
             <BiCopy />

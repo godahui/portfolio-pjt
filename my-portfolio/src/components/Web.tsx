@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useAppDispatch } from "../store/hooks";
+import { onCursor } from "../store/slice";
 
 const Web = () => {
+  const dispatch = useAppDispatch();
+  const cursorOn = () => {
+    dispatch(onCursor(true));
+  };
+  const cursorOff = () => {
+    dispatch(onCursor(false));
+  };
   return (
     <RootWrap
       initial={{ translateY: -200 }}
@@ -11,12 +20,20 @@ const Web = () => {
       transition={{ type: "spring", stiffness: 100 }}
     >
       <GalleryWrap>
-        <h3 onClick={() => window.history.back()}>Web Projects</h3>
+        <h3
+          onClick={() => window.history.back()}
+          onMouseOver={cursorOn}
+          onMouseLeave={cursorOff}
+        >
+          Web Projects
+        </h3>
         <ProjectList>
           <ProjectItem
-            initial={{ opacity: 0.5 }}
+            initial={{ opacity: 0.2 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <a
               href="https://noonnoppi-pjt.web.app/"
@@ -34,9 +51,11 @@ const Web = () => {
             </a>
           </ProjectItem>
           <ProjectItem
-            initial={{ opacity: 0.5 }}
+            initial={{ opacity: 0.2 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <Link
               to="/"
@@ -54,9 +73,11 @@ const Web = () => {
             </Link>
           </ProjectItem>
           <ProjectItem
-            initial={{ opacity: 0.5 }}
+            initial={{ opacity: 0.2 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <a href="/web/3" target="_blank" rel="noopener noreferrer">
               <div>
@@ -69,9 +90,11 @@ const Web = () => {
             </a>
           </ProjectItem>
           <ProjectItem
-            initial={{ opacity: 0.5 }}
+            initial={{ opacity: 0.2 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
           >
             <a href="/web/4" target="_blank" rel="noopener noreferrer">
               <div>

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ModalReducer from "./modalSlice";
+import ModalReducer from "./slice";
 
 const store = configureStore({
   reducer: {

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useAppDispatch } from "../store/hooks";
+import { onCursor } from "../store/slice";
 import styled from "styled-components";
 import bg1 from "../assets/main-1.png";
 import bg2 from "../assets/main-2.png";
@@ -10,6 +12,15 @@ import bg5 from "../assets/main-5.png";
 import bg6 from "../assets/main-6.png";
 
 const Main = () => {
+  const dispatch = useAppDispatch();
+
+  const cursorOn = () => {
+    dispatch(onCursor(true));
+  };
+  const cursorOff = () => {
+    dispatch(onCursor(false));
+  };
+
   const imgArr = [bg1, bg2, bg3, bg4, bg5, bg6];
   const length = imgArr.length;
   const [img, setImg] = useState(0);
@@ -56,16 +67,36 @@ const Main = () => {
           exit={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <Menu to="/about" className="top-left">
+          <Menu
+            to="/about"
+            className="top-left"
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
+          >
             <p>About</p>
           </Menu>
-          <Menu to="/web" className="top-right">
+          <Menu
+            to="/web"
+            className="top-right"
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
+          >
             <p>Web Projects</p>
           </Menu>
-          <Menu to="/works" className="bottom-left">
+          <Menu
+            to="/works"
+            className="bottom-left"
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
+          >
             <p>Design Works</p>
           </Menu>
-          <Menu to="/contact" className="bottom-right">
+          <Menu
+            to="/contact"
+            className="bottom-right"
+            onMouseOver={cursorOn}
+            onMouseLeave={cursorOff}
+          >
             <p>Contact</p>
           </Menu>
         </MenuWrap>

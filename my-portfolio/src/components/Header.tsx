@@ -1,25 +1,33 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { onToggle } from "../store/modalSlice";
+import { onMenuToggle, onCursor } from "../store/slice";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import { BiMenu } from "react-icons/bi";
 
 export const Header = () => {
   const dispatch = useAppDispatch();
-  const toggle = useAppSelector((state) => state.modal.toggle);
+  const toggle = useAppSelector((state) => state.modal.menuToggle);
+  const cursorOn = () => {
+    dispatch(onCursor(true));
+  };
+  const cursorOff = () => {
+    dispatch(onCursor(false));
+  };
   return (
     <HeaderWrap>
-      <Logo>
+      <Logo onMouseOver={cursorOn} onMouseLeave={cursorOff}>
         <Link to="/" title="메인으로 돌아가기">
           <img src={logo} alt="로고" />
         </Link>
       </Logo>
       <AbountBtn
         onClick={() => {
-          dispatch(onToggle(!toggle));
+          dispatch(onMenuToggle(!toggle));
         }}
         title="About Me"
+        onMouseOver={cursorOn}
+        onMouseLeave={cursorOff}
       >
         <BiMenu />
       </AbountBtn>

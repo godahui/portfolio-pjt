@@ -2,8 +2,17 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { works } from "../data/works";
+import { useAppDispatch } from "../store/hooks";
+import { onCursor } from "../store/slice";
 
 const Works = () => {
+  const dispatch = useAppDispatch();
+  const cursorOn = () => {
+    dispatch(onCursor(true));
+  };
+  const cursorOff = () => {
+    dispatch(onCursor(false));
+  };
   return (
     <RootWrap
       initial={{ translateY: -200 }}
@@ -12,15 +21,23 @@ const Works = () => {
       transition={{ type: "spring", stiffness: 100 }}
     >
       <GalleryWrap>
-        <h3 onClick={() => window.history.back()}>Design Works</h3>
+        <h3
+          onClick={() => window.history.back()}
+          onMouseOver={cursorOn}
+          onMouseLeave={cursorOff}
+        >
+          Design Works
+        </h3>
         <ProjectList>
           {works.map((o, inx) => {
             return (
               <ProjectItem
                 key={`item-${inx}`}
-                initial={{ opacity: 0.5 }}
+                initial={{ opacity: 0.2 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
+                onMouseOver={cursorOn}
+                onMouseLeave={cursorOff}
               >
                 <Link
                   to={`/works/${o.id}`}
