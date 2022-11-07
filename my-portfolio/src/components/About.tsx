@@ -108,6 +108,9 @@ const RootWrap = styled(motion.div)`
   justify-content: center;
   align-items: flex-start;
   overflow: hidden;
+  @media screen and (max-width: 768px) {
+    overflow: hidden auto;
+  }
 `;
 const ComponentWrap = styled.section`
   width: 100%;

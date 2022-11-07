@@ -124,9 +124,31 @@ const BgWrap = styled.div`
   padding: 10px;
   text-align: center;
   position: relative;
+  @keyframes morph {
+    0% {
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    17% {
+      border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+    }
+    34% {
+      border-radius: 90% 60% 40% 90% / 30% 30% 40% 70%;
+    }
+    51% {
+      border-radius: 60% 80% 40% 50% / 60% 50% 20% 90%;
+    }
+    67% {
+      border-radius: 50% 10% 30% 10% / 10% 60% 40% 50%;
+    }
+    100% {
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+  }
   img {
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
     margin-bottom: 80px;
+    animation: morph 5s linear infinite;
   }
   @media screen and (max-width: 900px) {
     width: 100%;

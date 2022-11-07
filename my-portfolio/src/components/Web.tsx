@@ -79,10 +79,15 @@ const Web = () => {
             onMouseOver={cursorOn}
             onMouseLeave={cursorOff}
           >
-            <a href="/web/3" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://cine21-pjt-5d9f2.web.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ backgroundImage: "url(assets/cine21.png)" }}
+            >
               <div>
-                <strong>준비중</strong>
-                <p>-</p>
+                <strong>씨네21 메인페이지 리뉴얼</strong>
+                <p>#반응형 #작업기간 1주 #jQuery, Figma 사용</p>
                 <div className="go-btn">
                   <span>사이트 바로가기</span>
                 </div>
