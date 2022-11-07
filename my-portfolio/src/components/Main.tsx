@@ -138,7 +138,7 @@ const BgWrap = styled.div`
       border-radius: 60% 80% 40% 50% / 60% 50% 20% 90%;
     }
     67% {
-      border-radius: 50% 10% 30% 10% / 10% 60% 40% 50%;
+      border-radius: 50% 50% 60% 20% / 30% 60% 40% 50%;
     }
     100% {
       border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
