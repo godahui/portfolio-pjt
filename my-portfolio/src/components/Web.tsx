@@ -101,9 +101,14 @@ const Web = () => {
             onMouseOver={cursorOn}
             onMouseLeave={cursorOff}
           >
-            <a href="/web/4" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://krispykreme-26057.web.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ backgroundImage: "url(assets/kreme.png)" }}
+            >
               <div>
-                <strong>준비중</strong>
+                <strong>크리스피 크림</strong>
                 <p>-</p>
                 <div className="go-btn">
                   <span>사이트 바로가기</span>
@@ -182,7 +187,7 @@ const ProjectItem = styled(motion.li)`
   &:hover {
     > a > div {
       height: 100%;
-      transition: all 0.2s;
+      transition: all 0.5s;
       .go-btn {
         display: flex;
       }
