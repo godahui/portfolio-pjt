@@ -109,7 +109,7 @@ const Web = () => {
             >
               <div>
                 <strong>크리스피 크림</strong>
-                <p>-</p>
+                <p>#반응형 #작업기간 1주 #Javascript, Figma 사용</p>
                 <div className="go-btn">
                   <span>사이트 바로가기</span>
                 </div>
