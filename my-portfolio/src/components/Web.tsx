@@ -108,7 +108,7 @@ const Web = () => {
               style={{ backgroundImage: "url(assets/kreme.png)" }}
             >
               <div>
-                <strong>크리스피 크림</strong>
+                <strong>크리스피 크림 메인페이지 리뉴얼</strong>
                 <p>#반응형 #작업기간 1주 #Javascript, Figma 사용</p>
                 <div className="go-btn">
                   <span>사이트 바로가기</span>
